@@ -5,6 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const User = require("./models/user.model");
 const Event = require("./models/event.model");
+const Booking = require("./models/booking.model");
 
 // bycrypt for hashing passwords
 const bcrypt = require("bcrypt");
@@ -111,6 +112,24 @@ app.get("/api/events", (req, res) => {
 });
 app.get("/", (req, res) => {
   res.send("Hello World!");
+});
+
+//booking routes
+app.post("/api/book-event", (req, res) => {
+  const {body} = req;
+
+  const booking = new Booking(body);
+  booking.save((err, booking) => {
+    if (err) {
+      return res.status(400).json({
+        err,
+      });
+    }
+    res.json({
+      booking,
+    });
+  });
+
 });
 
 //user routes
