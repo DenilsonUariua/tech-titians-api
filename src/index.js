@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const User = require("./models/user.model");
-const Event = require("./models/event.model");
+const Activity = require("./models/activity.model");
 const Booking = require("./models/booking.model");
 
 // bycrypt for hashing passwords
@@ -65,58 +65,59 @@ app.post("/api/login", (req, res) => {
   });
 });
 
-// event routes
-app.get("/api/event/:id", (req, res) => {
+// activity routes
+app.get("/api/activity/:id", (req, res) => {
   const { id } = req.params;
-  // get and event by id
-  Event.findById(id, (err, event) => {
+  // get and activity by id
+  Activity.findById(id, (err, activity) => {
     if (err) {
       return res.status(400).json({
         err,
       });
     }
     res.json({
-      event,
+      activity,
     });
   });
 });
 
-app.post("/api/event", (req, res) => {
+app.post("/api/activity", (req, res) => {
   const { body } = req;
 
-  const event = new Event(body);
-  event.save((err, event) => {
+  const activity = new Activity(body);
+  activity.save((err, activity) => {
     if (err) {
       return res.status(400).json({
         err,
       });
     }
     res.json({
-      event,
+      activity,
     });
   });
 });
 
-// get all events
-app.get("/api/events", (req, res) => {
-  Event.find({}, (err, events) => {
+// get all activities
+app.get("/api/activities", (req, res) => {
+  Activity.find({}, (err, activities) => {
     if (err) {
       return res.status(400).json({
         err,
       });
     }
     res.json({
-      events,
+      activities,
     });
   });
 });
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
 //booking routes
-app.post("/api/book-event", (req, res) => {
-  const {body} = req;
+app.post("/api/book-activity", (req, res) => {
+  const { body } = req;
 
   const booking = new Booking(body);
   booking.save((err, booking) => {
@@ -129,11 +130,10 @@ app.post("/api/book-event", (req, res) => {
       booking,
     });
   });
-
 });
 
 //user routes
-app.post("/api/user", (req, res) => {
+app.post("/api/register", (req, res) => {
   const { body } = req;
   // encrypt password
   const encryptedPassword = bcrypt.hashSync(body.password, saltRounds);
