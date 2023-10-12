@@ -12,7 +12,7 @@ const bcrypt = require("bcrypt");
 dotenv.config();
 
 const saltRounds = 10;
-
+console.log("MONGODB_URL", process.env);
 mongoose
   .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -25,7 +25,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000, https://sci-connect.netlify.app"],
+    origin:  "https://sci-connect.netlify.app",
     methods: ["GET,HEAD,PUT,PATCH,POST,DELETE"],
     credentials: true,
   })
