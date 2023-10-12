@@ -132,6 +132,19 @@ app.post("/api/book-activity", (req, res) => {
   });
 });
 
+app.get("/api/bookings", (req, res) => {
+  Booking.find({}, (err, bookings) => {
+    if (err) {
+      return res.status(400).json({
+        err,
+      });
+    }
+    res.json({
+      bookings,
+    });
+  });
+});
+
 //user routes
 app.post("/api/register", (req, res) => {
   const { body } = req;
