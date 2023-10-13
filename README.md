@@ -1,6 +1,8 @@
 # Sci-Connect API Documentation
 
 Welcome to the Sci-Connect API documentation. This API serves as the backend for Sci-Connect, a platform for managing science-related activities, users, and bookings.
+## Architecture Diagram
+![Architecture Diagram](https://i.imgur.com/NkKlYm1.png)
 
 ## Getting Started
 
