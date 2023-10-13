@@ -12,7 +12,6 @@ const bcrypt = require("bcrypt");
 dotenv.config();
 
 const saltRounds = 10;
-console.log("MONGODB_URL", process.env);
 mongoose
   .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -29,7 +28,7 @@ app.use(
     methods: ["GET,HEAD,PUT,PATCH,POST,DELETE"],
     credentials: true,
   })
-);
+); 
 
 // session stuff
 app.use(bodyParser.json());
