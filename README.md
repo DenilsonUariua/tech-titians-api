@@ -1,4 +1,5 @@
 # Sci-Connect API Documentation
+### Live Demo of Sci-Connect Website: https://sci-connect.netlify.app/
 
 Welcome to the Sci-Connect API documentation. This API serves as the backend for Sci-Connect, a platform for managing science-related activities, users, and bookings.
 ## Architecture Diagram
