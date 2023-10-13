@@ -25,7 +25,7 @@ const app = express();
 
 app.use(
   cors({
-    origin:  "https://sci-connect.netlify.app",
+    origin: "https://sci-connect.netlify.app",
     methods: ["GET,HEAD,PUT,PATCH,POST,DELETE"],
     credentials: true,
   })
